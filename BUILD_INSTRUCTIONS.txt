@@ -1,0 +1,52 @@
+# 🛠️ Build Instructions – PDF Comment Extractor
+
+This guide explains how to build the Windows executable (EXE) version of the PDF Comment Extractor app
+from the source code in this repository.
+
+---
+
+## 1. Requirements
+- Python 3.10 or newer
+- Git (optional, if cloning the repo)
+- Windows OS (build tested on Windows 10/11)
+
+---
+
+## 2. Install Dependencies
+First, make sure you have Python installed. Then install the required libraries.
+
+Option A: for running the app directly (source mode):
+    pip install -r requirements.txt
+
+Option B: for building the EXE (includes PyInstaller):
+    pip install -r build-requirements.txt
+
+---
+
+## 3. Build the EXE
+From the repo root folder (where extractor.py and CRS.xlsx are located), run:
+
+    pyinstaller --onefile --noconsole --name "pdf-comment-extractor" --add-data "CRS.xlsx;." extractor.py
+
+Notes:
+- On Windows, use a semicolon (;) in the --add-data argument.
+- On macOS/Linux, replace it with a colon (:):
+    --add-data "CRS.xlsx:."
+
+---
+
+## 4. Locate the Executable
+After building, you will find the EXE file here:
+
+    dist/pdf-comment-extractor.exe
+
+Copy CRS.xlsx next to the EXE before running.
+
+---
+
+## 5. Run the App
+Simply double-click the EXE. The GUI will open and you can select your PDF to extract comments.
+
+---
+
+✅ Done! You now have a standalone Windows application for creating CRS Excel files from annotated PDFs.
